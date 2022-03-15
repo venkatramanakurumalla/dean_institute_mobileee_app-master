@@ -1,3 +1,7 @@
+import 'dart:async';
+
+
+import 'package:dean_institute_mobile_app/pages/home_items/forget_password.dart';
 import 'package:dean_institute_mobile_app/ui/auth/login/login_page_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -72,19 +76,29 @@ class LoginPage extends StatelessWidget {
   //Uri('https://reqres.in/api/register');
     var response = await http.post(Uri.parse('https://deaninstitute.fastrider.co/api/login'), body: data);
     if(response.statusCode == 200) {
-      
+        Map K=  json.decode(response.body);
 // var status =prefs.setBool("isLoggedIn", true);
       // print(status);
    //  Get.to(HomePage(),arguments:email);
      
-      jsonResponse = json.decode(response.body);
-      print(jsonResponse); 
-      userdata.write("name",jsonResponse["name"]);
+    //  jsonResponse = json.decode(response.body);
+     // print(jsonResponse); 
+     // userdata.write("name",jsonResponse["name"]);
      userdata.write("body",response.body);
-      Get.to(HomePage(),arguments:email);
+      Get.offAll(HomePage(),arguments:email);
+      // Map K=  json.decode(response.body);
+       final prefs = await SharedPreferences.getInstance();
+    //prefs.setString(response[user[0]],K[user[0]]);
+prefs.setInt("id",K["id"]);
+    prefs.setString("access_token",K["access_token"]);
+  var token = prefs.getString('access_token');
+  
+  var id = prefs.getInt('id');
+
      
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      // prefs.setString("token",response['token']);
+       //SharedPreferences prefs = await SharedPreferences.getInstance();
+//var v=prefs.setString("access_token",jsonResponse["access_token"]);
+//print(v);
      //// asyncFunc() async { // Async func to handle Futures easier; or use Future.then
  // SharedPreferences prefs = await SharedPreferences.getInstance();
 //}
@@ -95,14 +109,14 @@ class LoginPage extends StatelessWidget {
 //String token = prefs.getString('apiToken');
 // Remove
 //prefs.remove('apiToken');
-         print(jsonResponse); 
+       //  print(jsonResponse); 
       // var  v=jsonResponse.obs;
        
      // https://www.deaninstitute.fastrider.co/api/user?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjk3OTQ3Y2IwODZhMTU4MWJlNzYxYzY2MTM4YzVjNGFiNGNhNWRmOGRiYjIyOTU5NDcyZTlhOWI5N2Q3ZmI2ZTQwMmM4NDhiZDkyOTAzODgiLCJpYXQiOjE2MzkyMTA5OTcuNDYyNDg4ODg5Njk0MjEzODY3MTg3NSwibmJmIjoxNjM5MjEwOTk3LjQ2MjQ5Mjk0MjgxMDA1ODU5Mzc1LCJleHAiOjE2NzA3NDY5OTcuMjEyODYyOTY4NDQ0ODI0MjE4NzUsInN1YiI6IjE3Iiwic2NvcGVzIjpbXX0.qT9smrC_BxmKKuGTBj8SUI3RDgiR2JcoCP8Yakp-kEk2OzG43E8gNGweusZE4M3u46K43Gn9YORri_GcTmSzGy1-C_LTVAVTte1FHLiZQgzkTVworijHRnBvhnOk4WL-378Qrnd55_r8dzrPbvi-7c8WG2qfHQ-Fu0u2GH3Ji7GCt9wMkRucyjQZd6QNYq_JQFZg4MKoUYuQvBsufrilqW8r8QVDKKaNWDaIG-lFANsKiah8Zdq0eFmkDbaSaFXrIueA6RiC0nCJge5UdePQQnZYorz2tfK0gUE4SeOjn8BNt-4mY4Brd-p5rpKsZDut9SiNoQpKjzI3JHiEeGQydGgnT6sily1djvy_TK-irB6LN6MREvC7zr8aqnJ6SpgDUIvdtSezCxeCfLK_WhFzDkI35_TOXveh_uhYXxJOrcThln4Wj0JKC5-th_2KIcmszQ23gBOAPlEju_HMt9llA7euow186SsvHnzLG-sK3V6UTAYJzUqkb7-MB7JXvymTCqyH0l0BNhs3ry8RFXtUe5TpBEl4UTMNzR8-A9IJUAbCqUSfd2XMcWrL9m-p-7ZgwQk6mAEl1mJKZSICPjL60TZlUbcpCPkELQdJLjYe9CVqDU303AF79HH0cYIVT10TqM_E4Tjd741-LHPN6CpYlEiP_GMbeEuribKsVUjMdRY
        // Get.snackbar("Sucess", "Login Sucess");
        Get.snackbar(
               "Sucessful Login",
-               "Hello everyone"+""+email,
+               ""+""+email,
                icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
                backgroundColor: Colors.red,
@@ -116,6 +130,9 @@ class LoginPage extends StatelessWidget {
 
                );
       print("sucess");
+      print(id);
+      print(token);
+      print(K[0]);
       print(r);
      //  print(status);
       //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -137,8 +154,9 @@ class LoginPage extends StatelessWidget {
     }
     else {
        Get.snackbar(
-              "Un.Sucessful Login",
-               "plz cheack"+"password${response.body}",
+              "Un Sucessful Login",
+               "plz cheack"+"password",
+                //${response.body}",
                icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
                backgroundColor: Colors.red,
@@ -155,7 +173,8 @@ class LoginPage extends StatelessWidget {
      //   _isLoading = false;
      // });
       errorMsg = response.body;
-      print("The error message is: ${response.body}");
+      print("The error message is:" );
+      //${response.body}");
       print("nooo");
     }
   }
@@ -198,7 +217,8 @@ class LoginPage extends StatelessWidget {
     else {
        Get.snackbar(
               "Sucessful Login",
-               "plz cheack"+"password${response.body}",
+               "plz cheack"+"password+Email",
+               //${response.body}",
                icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
                backgroundColor: Colors.red,
@@ -215,7 +235,7 @@ class LoginPage extends StatelessWidget {
         //_isLoading = false;
      // });
      // errorMsg = response.body;
-      print("The error message is: ${response.body}");
+      print("The error message is:Cheack password&email");
     }
   }
   
@@ -266,16 +286,15 @@ class LoginPage extends StatelessWidget {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                     //   CheckBoxWithTitle(),
-                        ElevatedButton(
+
+  ElevatedButton(
                           onPressed: () { 
      
                           
           
                             post();
+                            emailController.clear();
+                            passwordController.clear(); 
                           //  Register(nameController.text,emailController.text, passwordController.text);
                           },
                           style: ElevatedButton.styleFrom(
@@ -298,14 +317,38 @@ class LoginPage extends StatelessWidget {
                          ),
                         ),
 
+
+
+
+
+
+
+
+
+
+                   
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                     //   CheckBoxWithTitle(),
+                       
+
                          TextButton(
+                            onPressed: () {
+                              Get.to(Forgetpassword());
+                            },
+                            child: Text(
+                              "Forget Password",
+                              style: GoogleFonts.lato(fontSize: 12.sp),
+                            )),
+                             TextButton(
                             onPressed: () {
                               Get.toNamed("/signUp");
                             },
                             child: Text(
                               "Sign Up",
                               style: GoogleFonts.lato(fontSize: 12.sp),
-                            ))
+                            )),
                       ],
                     ),
                   ],

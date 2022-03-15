@@ -20,13 +20,18 @@ class RegistePage extends StatefulWidget {
 class _RegistePageState extends State<RegistePage> {
  
   var van=Get.arguments[0];
+//SharedPreferences prefs = await SharedPreferences.getInstance();
+ // var user_id = prefs.getInt('id');
+   
+  
+  var user_id;
 
 //const SignUpPage({Key? key}) : super(key: key);
  
 // bool _isLoading = false;
   var errorMsg;
   String StripeToken='pk_test_51JPqrYSBtCOIyCFtizgVpjDQAibCuY983h4MYUGwrWRALR9RL2j9vsuhzW279LVCjfx8Aqt5cpPuUWcGeTaBqxSH00mRBRc4ax';
- static String user_id='1';
+ //static String user_id='1';
 String latitude='yes';
 String longitude='yes';
 
@@ -73,6 +78,7 @@ static TextEditingController longitudeController = new TextEditingController();
                       controller:  card_numberController,
                       decoration: InputDecoration(
                         labelText: "Card Number",
+                        hintText: "4242424242424242",
                        // fillColor: Colors.blueAccent, filled: true
                         // controller: emailController,
                         border: OutlineInputBorder(),
@@ -205,7 +211,8 @@ static TextEditingController longitudeController = new TextEditingController();
   var errorMsg;
   
     
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var user_id = prefs.getInt('id');
   
 //String StripeToken='pk_test_51JPqrYSBtCOIyCFtizgVpjDQAibCuY983h4MYUGwrWRALR9RL2j9vsuhzW279LVCjfx8Aqt5cpPuUWcGeTaBqxSH00mRBRc4ax';
 //id=1;
@@ -213,7 +220,7 @@ String latitude='yes';
 String longitude='yes';
  // double ip=1212;
    Map data = {
-      'user_id':user_id,
+      'user_id':user_id.toString(),
      'StripeToken':StripeToken,
      'card_number':card,
      'exp_month':month,
@@ -305,6 +312,6 @@ class _CheckBoxWithTitleState extends State<CheckBoxWithTitle> {
   
   
 }
-class USER{
-  static var user_id;
-}
+//class USER{
+  //static var user_id;
+//}

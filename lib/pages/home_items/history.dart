@@ -57,7 +57,7 @@ class User {
       //required this.paymentMethod,
       //required this.balanceTransaction,
      // required this.currency,
-     // required this.amount,
+      required this.amount,
      // required this.cardNumber,
      // required this.cardexpMonth,
     //  required this.cardexpYear,
@@ -148,7 +148,8 @@ class _HomePageState extends State<HomePage> {
     //replace your restFull API here.
     SharedPreferences prefs = await SharedPreferences.getInstance();
      String? access_token = prefs.getString('access_token');
-     String? user_id = prefs.getString('user_id');
+     //String? user_id = prefs.getString('user_id');
+      var user_id = prefs.getInt('id');
 
      String url = 'https://deaninstitute.fastrider.co/api/payment-history/'+user_id.toString();
     //String url = 'https://deaninstitute.fastrider.co/api/payment-history/18';
@@ -168,7 +169,7 @@ class _HomePageState extends State<HomePage> {
          id: singleUser["id"],
          invoiceNo:singleUser["invoice_no"], 
          userId: singleUser["user_id"],
-          
+        amount: singleUser["amount"], 
          
        //  sellingPrice: singleUser["sellingPrice"],
          // subcategory_logo: singleUser["subcategory_logo"],
@@ -207,33 +208,76 @@ class _HomePageState extends State<HomePage> {
                     future: getRequest(),
                     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
                       if (snapshot.data == null) {
-                        return Container(
+                        return 
+                        Container(
                           child: Center(
                             child: CircularProgressIndicator(),
                           ),
                         );
                       } else {
-                        return //ListView.builder(
-                            GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 300,
-                                  childAspectRatio: 3 / 2,
-                                  crossAxisSpacing: 5,
-                                  mainAxisSpacing: 5),
+                        return ListView.builder(
+                           // GridView.builder(
+                         // gridDelegate:
+                             // const SliverGridDelegateWithMaxCrossAxisExtent(
+                                //  maxCrossAxisExtent: 300,
+                                 // childAspectRatio: 3 / 2,
+                                 // crossAxisSpacing: 5,
+                                 // mainAxisSpacing: 5),
                           itemCount: snapshot.data.length,
                           itemBuilder: (ctx, index) {
-                            return Container(
-                              child: SizedBox(
+                            return
+                            Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    side: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ListTile(
+                          title: Text(
+                           "amount:" +snapshot.data[index].amount.toString(),
+                           // userLists[index].title.toString(),
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          subtitle: Text(
+                            "invoice number:"+snapshot.data[index].invoiceNo,
+                           // userLists[index].slug.toString(),
+                            style: TextStyle(fontSize: 16),)
+                            
+                            
+                         ) ],     
+                        ),
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                         //    Container(
+                           //   child: SizedBox(
                                 // height: double.infinity,
-                                height: 1000,
+                               // height: 1000,
 
                                 //child:     Card(
                                 // elevation: 1.0,
-                                child: Column(children: [
-                                  ListTile(
+                             //   child: Column(children: [
+                               //   ListTile(
                                      //  title: Text(snapshot.data[index].userId,textAlign: TextAlign.center,),
-                                    subtitle: Text("invoice number"+snapshot.data[index].invoiceNo),
+                                  //  subtitle: Text("invoice number"+snapshot.data[index].invoiceNo),
 
                                     //    trailing:Text(snapshot.data[index].amount),
                                     // trailing: Icon(Icons.book_online),
@@ -245,8 +289,8 @@ class _HomePageState extends State<HomePage> {
                                   //),
                                   //elevation: 5,
                                   // margin: EdgeInsets.all(10),
-                                ]),
-                              ),
+                            //    ]),
+                            //  ),
                               // child:
                               // child:   buildCard(),
                               //  alignment: Alignment.center,
@@ -259,9 +303,9 @@ class _HomePageState extends State<HomePage> {
 
                               // }
                               // ]
-                            ); //);//);
+                           // ); //);//);
                             //}
-                          },
+                             ); },
                           // ),
                           //),
                         );

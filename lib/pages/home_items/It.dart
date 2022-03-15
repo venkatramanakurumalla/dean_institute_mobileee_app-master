@@ -264,14 +264,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ListTile(
-             title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
+            // title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
               //subtitle: Text("Enroll now"),
           
-           //  trailing: Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image),
+            title: Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image),
             // trailing: Icon(Icons.book_online),
               onTap: () {
                      var p=snapshot.data[index].sellingPrice.toString();
-                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p]);
+                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p,snapshot.data[index].id]);
                  // ),
                        }  ),
 

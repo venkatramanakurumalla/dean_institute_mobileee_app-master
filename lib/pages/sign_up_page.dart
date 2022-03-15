@@ -143,7 +143,8 @@ static TextEditingController emailController = new TextEditingController();
       }
     }
     else {
-       Get.snackbar("Sucess", "Signup Sucess+${response.body}");
+       Get.snackbar("Sucess", "Signup UnSucess+");
+      // ${response.body}");
     //  setState(() {
        // _isLoading = false;
     //  });

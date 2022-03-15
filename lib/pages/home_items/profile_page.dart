@@ -1,4 +1,5 @@
 import 'package:dean_institute_mobile_app/pages/changepassword.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/about.dart';
 import 'package:dean_institute_mobile_app/pages/home_page.dart';
 import 'package:dean_institute_mobile_app/pages/profile_pages/payment_history.dart';
 import 'package:dean_institute_mobile_app/pages/profile_pages/update_profile.dart';
@@ -118,11 +119,13 @@ class Profile extends StatelessWidget {
                 ),
                    
  
-                 CircleAvatar(
+                CircleAvatar(
               radius: 50,
             backgroundColor:Colors.cyan,
-            //  backgroundImage:
-              backgroundImage:AssetImage('assets/images/person.jpg'),
+        //  backgroundImage:
+             // Image.asset('images/edu.png'),
+              backgroundImage:AssetImage("assets/images/person.jpg"),
+             
             ),
               ////Text(
                 //"${userdata.read('name')}",
@@ -161,38 +164,59 @@ class Profile extends StatelessWidget {
               ),
 
              
-Card(   child: InkWell(onTap: () {Get.to(UpdateProfile());},
+//Card(   child: InkWell(onTap: () {Get.to(UpdateProfile());},
              // margin:
               // EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-              child: ListTile(
-                leading: Icon(
-                  Icons.password,
-                  color: Colors.teal,
-                ),
+             // child: ListTile(
+              //  leading: Icon(
+               //   Icons.update,
+                //  color: Colors.teal,
+               // ),
                    
-                title: Text(
-                  "update profile",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'SourceSans',
+              //  title: Text(
+               //   "update profile",
+               //   style: TextStyle(
+                //    fontSize: 20,
+                 //   fontFamily: 'SourceSans',
               
-                  ),
-                ),
-              ))
-            ),
+                 // ),
+              //  ),
+            //  ))
+            //  ),
         
             Card( child: InkWell(onTap: () {Get.to(Changepassword());},
              // margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
               child: ListTile(
                 selected: true,
                 leading: Icon(
-                  Icons.update,
+                  Icons.password,
                   color: Colors.teal,
                 ),
               
                 title: Text(
                   
                   "change password",
+                  style: TextStyle(
+                    color: Colors.teal.shade900,
+                    fontFamily: 'SourceSans',
+                    fontSize: 20,
+                  ),
+                ),
+              ),),
+            ),
+
+             Card( child: InkWell(onTap: () {Get.to(Myabout());},
+             // margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+              child: ListTile(
+                selected: true,
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.teal,
+                ),
+              
+                title: Text(
+                  
+                  "about",
                   style: TextStyle(
                     color: Colors.teal.shade900,
                     fontFamily: 'SourceSans',

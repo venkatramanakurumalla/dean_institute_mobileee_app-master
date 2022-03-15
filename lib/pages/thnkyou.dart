@@ -1,4 +1,5 @@
 import 'package:dean_institute_mobile_app/main.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -85,7 +86,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
                 onTap: () {
                  // Get.to(MyAlll());
                  // HomePage
-                  Get.to(Home());
+                  Get.offAll(hist());
                 },
               ),
             ),

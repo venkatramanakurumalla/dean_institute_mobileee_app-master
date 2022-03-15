@@ -67,11 +67,11 @@ class _WelcomePageState extends State<WelcomePage> {
  // final  LoginPage = new LoginPage();
   final LoginPage c = Get.put(LoginPage());
 if(userdata.read("body")==null){
-   Get.to(LoginPage());
+   Get.offAll(LoginPage());
     // Get.to(HomePage());
 }
 else{
-   Get.to(HomePage());
+   Get.offAll(HomePage());
   // Get.to(LoginPage());
      
 }
