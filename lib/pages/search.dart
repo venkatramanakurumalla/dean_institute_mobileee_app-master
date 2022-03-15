@@ -180,8 +180,8 @@ class _HomePageState extends State<HomePage> {
    // String url ="https://deaninstitute.fastrider.co/api/all-sub-category";
     // String url="https://www.deaninstitute.fastrider.co/api/course-by-subcategory/1";
      // String url= "https://deaninstitute.fastrider.co/api/course-by-category/3";
- String url="https://www.deaninstitute.fastrider.co/api/search-course?Qa";
-
+ //String url="https://www.deaninstitute.fastrider.co/api/search-course?Qa";
+String url="https://www.deaninstitute.fastrider.co/api/course";
     //https://https://www.deaninstitute.fastrider.co/api/category-to-subcategory/1
     final response = await http.get(Uri.parse(url));
   
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
             // trailing: Icon(Icons.book_online),
               onTap: () {
                      var p=snapshot.data[index].sellingPrice.toString();
-                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p]);
+                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p,snapshot.data[index].id]);
                  // ),
                        }  ),
 

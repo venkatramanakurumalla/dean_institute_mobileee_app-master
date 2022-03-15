@@ -1,3 +1,5 @@
+
+import 'package:dean_institute_mobile_app/pages/home_items/serch_two.dart';
 import 'package:dean_institute_mobile_app/pages/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,22 +33,25 @@ class HomePageAppBar extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                AppBarIconButton(
-                  iconData: CupertinoIcons.cart_fill,
-                  onButtonTap: () {
-                    print("Pressed Cart Button");
-                  },
-                ),
+                Text("Call +1-518-621-0378",
+                style: TextStyle(color: Colors.white),
+          textDirection: TextDirection.ltr),
+               // AppBarIconButton(
+               //   iconData: CupertinoIcons.cart_fill,
+                //  onButtonTap: () {
+                //    print("Pressed Cart Button");
+                //  },
+              //  ),
                 SizedBox(
                   width: 16,
                 ),
-                AppBarIconButton(
-                  iconData: CupertinoIcons.bell_fill,
-                  onButtonTap: () {
-                    Get.to(sear());
+              //  AppBarIconButton(
+                 // iconData: CupertinoIcons.bell_fill,
+                //  onButtonTap: () {
+                //    Get.to(Jobs());
                    // print("Pressed Bell Button");
-                  },
-                ),
+               //   },
+              //  ),
               ],
             ),
           ),
@@ -70,12 +75,13 @@ class HomePageAppBar extends StatelessWidget {
                             errorBorder: InputBorder.none,
                             disabledBorder: InputBorder.none,
                             prefixIcon: Icon(Icons.search),
+                            
                             contentPadding: EdgeInsets.only(
                                 left: 15.w,
                                 bottom: 11.h,
                                 top: 11.h,
                                 right: 15.w),
-                            hintText: "Search courses, bootcamp"),
+                            hintText: "Search courses, bootcamp"),onTap: () { Get.to(Jobs()); },
                       ),
                     )),
               )),

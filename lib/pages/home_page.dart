@@ -1,6 +1,8 @@
 import 'package:dean_institute_mobile_app/pages/home_items/bootcamp_page.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/courses_page.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/history.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/home_main_page.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/my_course.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/profile_page.dart';
 import 'package:dean_institute_mobile_app/utility/dean_institute_icons_icons.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +28,10 @@ class _HomePageState extends State<HomePage> {
      Home1(),
    cate(),
    // Courses(),
-    Bootcamp(),
-    MyCourses(),
+   hist(),
+   // Bootcamp(),
+   balche(),
+   // MyCourses(),
     Profile()
 
   ];
@@ -54,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(
               Icons.collections_bookmark_rounded,
             ),
-            label: "Bootcamps",
+            label: "history",
           ),
           BottomNavigationBarItem(
             icon: Icon(

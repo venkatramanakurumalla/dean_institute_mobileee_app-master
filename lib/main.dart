@@ -13,17 +13,20 @@ import 'package:dean_institute_mobile_app/ui/splash/welcome_page.dart';
 import 'package:dean_institute_mobile_app/ui/splash/welcome_page_binding.dart';
 import 'package:dean_institute_mobile_app/utility/app_palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 void main() async{
 
   await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
    runApp(HomePage(),); // Wrap your app
   //);
    
    
-
+ 
  
 
 }

@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
        // backgroundColor:Colors.red,
        // leading: Contain
        // er(),
-       title:Text("IT Courses",textAlign: TextAlign.center),
+       title:Text(" Courses",textAlign: TextAlign.center),
       //  toolbarHeight: 163.h,
        // shape: RoundedRectangleBorder(
          //   borderRadius: BorderRadius.only(
@@ -264,14 +264,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ListTile(
-             title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
-              //subtitle: Text("Enroll now"),
+            // title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
+            //  subtitle: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
           
-           //  trailing: Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image),
+             title: Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image),
             // trailing: Icon(Icons.book_online),
               onTap: () {
                      var p=snapshot.data[index].sellingPrice.toString();
-                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p]);
+                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p,snapshot.data[index].id]);
                  // ),
                        }  ),
 

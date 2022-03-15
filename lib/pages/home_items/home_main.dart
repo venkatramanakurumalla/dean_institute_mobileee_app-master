@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:dean_institute_mobile_app/data/models/sample_course_model.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/sample_data.dart';
 import 'package:dean_institute_mobile_app/widgets/course_list_item.dart';
 import 'package:dean_institute_mobile_app/widgets/dynamic_tabs.dart';
@@ -11,6 +11,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:getwidget/getwidget.dart';
 
 import 'detail_all.dart';
 
@@ -24,7 +25,7 @@ class User {
   late String slug;
   late String description;
   late String image;
-  late String classType;
+  late String classType; 
   late Null video;
  late String enroll;
   late String hours;
@@ -136,7 +137,7 @@ Future<List<User>> getRequest() async {
      String url = "https://www.deaninstitute.fastrider.co/api/course";
   //  String url = "https://www.deaninstitute.fastrider.co/api/course";
     //https://www.deaninstitute.fastrider.co/api/course-by-subcategory/1
-    final response = await http.get(Uri.parse(url));
+    final response =   await http.get(Uri.parse(url));
   
     var responseData = json.decode(response.body);
   
@@ -163,13 +164,15 @@ Future<List<User>> getRequest() async {
   }
 
 class Home1 extends StatelessWidget {
-  var p;
-
+//  var p;
+ //late final SampleCourseModel sampleCourse;
 //  const Home1({Key? key}) : super(key: key);
+//const Home1(this.sampleCourse, {Key? key}) : super(key: key);
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
+     // debugShowCheckedModeBanner: false,
       backgroundColor: Color(0xFFE9E9E9),
       appBar: AppBar(
         leading: Container(),
@@ -182,6 +185,7 @@ class Home1 extends StatelessWidget {
         flexibleSpace: HomePageAppBar(),
       ),
       body: 
+    //  SingleChildScrollView(
         // Flexible(
         
         Container(
@@ -205,43 +209,38 @@ class Home1 extends StatelessWidget {
                 mainAxisSpacing: 5),
                   itemCount: snapshot.data.length,
                  itemBuilder: (ctx, index){return Container(
-            child:      SizedBox(
+          //  child:      SizedBox(
+
+               child:      SizedBox(
  // height: double.infinity, 
-// height: 10,
+ height: 10,
     
-              //child:     Card(clipBehavior: Clip.antiAlias,
+            //  child:     Card(clipBehavior: Clip.antiAlias,
        // shape: RoundedRectangleBorder(
           //borderRadius: BorderRadius.circular(10.0),
-                //color:Colors.blueAccent,
+               // color:Colors.blueAccent,
       ///elevation: 1.0,
         child:  Column(
           children: [
             ListTile(
-             // title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
+            //  title: Text(snapshot.data[index].slug,textAlign: TextAlign.center,),
               //subtitle: Text("Enroll now"),
               
-        //  trailing:
+         // trailing:
           
-    title:
-         Container(
-           
-          // width:10,
-                // height: 10.h,
-          child:
-         Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image,fit: BoxFit.cover,),),
-          
-                
-                
-         // Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image,fit: BoxFit.cover,),
+        title:  Image.network('https://deaninstitute.fastrider.co//'+snapshot.data[index].image,fit: BoxFit.cover,),
+         
             // subtitle: Icon(Icons.book_online),
+
              onTap: () {
-                     // if(index==0){
-                        var p=snapshot.data[index].sellingPrice.toString();
-                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p]);
-                        // Get.to(CourseDetails(  courseModel: s, ));
-                     // }
-                      
-               }  ),
+
+ var p=snapshot.data[index].sellingPrice.toString();
+                      Get.to(CourseDetailsAll(),arguments:[snapshot.data[index].image,snapshot.data[index].description,snapshot.data[index].slug,p,snapshot.data[index].id]);
+
+
+             }
+ 
+),
 
            // ),
                // shape: RoundedRectangleBorder(
@@ -270,7 +269,7 @@ class Home1 extends StatelessWidget {
             // ]  
             // ));//);
               //}
-                 );},
+                  ); },
          // ),
         //),
      );
@@ -278,3 +277,5 @@ class Home1 extends StatelessWidget {
 
 
 
+
+ 

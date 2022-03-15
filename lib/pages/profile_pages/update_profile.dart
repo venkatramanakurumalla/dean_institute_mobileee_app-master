@@ -22,7 +22,7 @@ class UpdateProfile extends StatelessWidget {
           )
         ],
       ),
-      body: SafeArea(
+      body:  SafeArea( 
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
           child: Column(
@@ -75,7 +75,7 @@ class UpdateProfile extends StatelessWidget {
               ),
               SizedBox(height: 28.h),
               TextFormField(
-                initialValue: "sarame@gmail.com",
+                initialValue: "Enter you email we send to password reset link to email",
                 style: GoogleFonts.lato(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,

@@ -238,8 +238,9 @@ class CourseDetailsAll extends StatelessWidget {
                    onTap: () { //Get.toNamed("enroll");
                      var g=Get.arguments[0];
                      var p=Get.arguments[3];
+                     var i=Get.arguments[4];
                    //  Get.to(InstituteInfoLogo());
-                  Get.to(PaymentScreen(),arguments:[g,p]);
+                  Get.to(PaymentScreen(),arguments:[g,p,i]);
                    // Get.to(registerPage1());
 
                       //_showAlert(context, () {
